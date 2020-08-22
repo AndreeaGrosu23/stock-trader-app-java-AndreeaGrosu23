@@ -18,9 +18,13 @@ public class Trader {
 
 	private StockAPIService stockService;
 
-	public Trader() {
-        this.stockService = new StockAPIService();
-    }
+	public void setService(StockAPIService service) {
+		this.stockService = service;
+	}
+
+//	public Trader() {
+//        this.stockService = new StockAPIService();
+//    }
 
 	/** Checks the price of a stock, and buys it if the price is not greater than the bid amount.
 	 * 	@return whether any stock was bought */

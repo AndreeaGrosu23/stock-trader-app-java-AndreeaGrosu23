@@ -7,9 +7,28 @@ import java.util.Scanner;
  * Provides a command line interface for stock trading.
  **/
 public class TradingApp {
+
+	private static Logger logger;
+	private static StockAPIService service;
+	private static RemoteURLReader reader;
+	private static Trader trader;
+
 	public static void main(String[] args) {
-	    TradingApp app = new TradingApp();
+
+		logger = Logger.getInstance();
+		trader = Trader.getInstance();
+		service = new StockAPIService();
+		reader = new RemoteURLReader();
+
+	    TradingApp app = new TradingApp(logger, service, reader, trader);
 	    app.start();
+	}
+
+	public TradingApp(Logger logger1, StockAPIService service1, RemoteURLReader reader1, Trader trader1) {
+		logger = logger1;
+		service = service1;
+		reader = reader1;
+		trader = trader1;
 	}
 
 	public void start() {
